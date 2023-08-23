@@ -7,6 +7,7 @@ declare const google: any;
   templateUrl: './google-map.component.html',
   styleUrls: ['./google-map.component.css']
 })
+
 export class GoogleMapComponent implements OnInit {
 
   constructor() { }
