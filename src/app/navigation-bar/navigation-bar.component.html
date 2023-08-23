@@ -1,1 +1,8 @@
-<div class="navMenu">Navigation Menu</div>
+<span class="icon-container" (mouseenter)="showMenu()" (mouseleave)="hideMenu()" >
+    <i class="pi pi-user loginIcon" ></i>
+    <div class="loginMenu" [hidden]="!isHovered" >
+        <ul>
+            <li *ngFor="let option of loginOptions">{{ option }}</li>
+          </ul>
+        </div>
+</span>
