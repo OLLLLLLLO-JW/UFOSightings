@@ -6,6 +6,6 @@ import { Injectable } from '@angular/core';
 export class LoginMenuService {
 
   constructor() { }
-  menuOptions: string[] = ["Login", "FAQ", "Help"];
+  menuOptions: string[] = ["Login", "Home"];
 
 }

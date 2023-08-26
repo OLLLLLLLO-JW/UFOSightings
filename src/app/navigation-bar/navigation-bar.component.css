@@ -9,9 +9,10 @@ color: grey;
 }
 
 .loginMenu {
-        background-color: green;
+        background-color: grey;
 }
 .loginMenu ul li:hover{
     font-weight: bold;
     cursor: pointer;
+    color: white;
 }
