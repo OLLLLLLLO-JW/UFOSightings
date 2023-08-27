@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GoogleMapComponent } from './google-map/google-map.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoogleMapComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    LoginModalComponent
   ],
   imports: [
     BrowserModule,
