@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,8 +10,11 @@ export class LoginModalComponent {
 
   constructor(private router: Router){}
 
-  navigateToNewURL() {
-    this.router.navigate(['/login']);
+  @Output() closeModalClicked = new EventEmitter<string>();
+
+  closeModal(){
+    this.router.navigate(['/home']);
+    this.closeModalClicked.emit();
   }
 
 }

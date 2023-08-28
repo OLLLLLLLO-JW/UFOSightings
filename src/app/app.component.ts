@@ -21,8 +21,16 @@ export class AppComponent implements OnInit {
   }
 
   menuOptionCLicked(option: string) {
-    if (option==='Login'){
-      this.shouldShowLoginModal = true;
+    switch (option){
+      case "Login":
+        this.shouldShowLoginModal = true;
+        break;
+      case "Home":
+        this.shouldShowLoginModal = false;
+        break;
+      default:
+        this.shouldShowLoginModal = false;
+        break;
     }
   }
 }
