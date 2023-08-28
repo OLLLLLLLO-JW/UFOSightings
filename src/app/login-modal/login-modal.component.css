@@ -13,18 +13,46 @@
   
   /* Styles for the modal card */
   .modal-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: white;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    max-height: 80vh;
+    height: 200px;
+    max-height: 200px;
     overflow: auto;
   }
+  /* area containing both inputs username and password */
+  .modal-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* area below password containing both buttons */
+  .modal-buttons-container{
+    display: flex;
+    justify-content: space-evenly; 
+    width: 50%;
+    padding: 20px 0;
+    gap: 20px; 
+  }
   
-  /* Style for the close button */
-  .modal-buttons{
+  input, button{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  
+  .modal-buttons-style{
     background-color: #e1ecf4;
     border-radius: 3px;
     border: 1px solid #7aa7c7;
@@ -32,7 +60,6 @@
     box-sizing: border-box;
     color: #39739d;
     cursor: pointer;
-    display: inline-block;
     font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -49,17 +76,17 @@
     vertical-align: baseline;
     white-space: nowrap;
   }
-  .modal-buttons:hover,
-.modal-buttons:focus {
+  .modal-buttons-style:hover,
+.modal-buttons-style:focus {
   background-color: #b3d3ea;
   color: #2c5777;
 }
 
-.modal-buttons:focus {
+.modal-buttons-style:focus {
   box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
 }
 
-.modal-buttons:active {
+.modal-buttons-style:active {
   background-color: #a0c7e4;
   box-shadow: none;
   color: #2c5777;
