@@ -4,12 +4,27 @@
 font-size: 2.5rem;
 color: grey;
 }
+
 .icon-container{
     float: right;
 }
 
 .loginMenu {
-        background-color: grey;
+    background-color: grey;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.loginMenu ul{
+    list-style-type: none;
+    cursor: pointer;
+    padding: 0; 
+    margin: 0;
+}
+
+.loginMenu ul li {
+    align-items: center;
+    padding: 5px;
 }
 .loginMenu ul li:hover{
     font-weight: bold;

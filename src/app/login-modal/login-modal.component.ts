@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-modal',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent {
+
+  constructor(private router: Router){}
+
+  navigateToNewURL() {
+    this.router.navigate(['/login']);
+  }
 
 }
