@@ -24,6 +24,7 @@ export class GoogleMapComponent implements OnInit {
     const position = { lat: 33.452, lng: -112.074 };
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    const ufoImage = "../../assets/ufo.png"
 
     const map = new Map(document.getElementById("map"), {
       zoom: 10,
@@ -32,10 +33,20 @@ export class GoogleMapComponent implements OnInit {
       disableDefaultUI: true
     });
 
+    // One method of adding a marker
+    // Using icon for an image does NOT work on this one
     const marker = new AdvancedMarkerElement({
       map: map,
       position: position,
-      title: "Ufo"
+      title: "Ufo",
+    });
+
+    // Legacy method of adding a marker
+    // Using icon for an image works on this one
+    new google.maps.Marker({
+      position: {lat: 33.452, lng: -112.274},
+      map: map,
+      icon: ufoImage,
     });
 
 
