@@ -17,15 +17,16 @@ export class GoogleMapComponent implements OnInit {
   }
 
   async  initMap(): Promise<void> {
-    // const map = new google.maps.Map(document.getElementById('map'), {
-    //   center: { lat: 33.452, lng: -112.074 },
-    //   zoom: 10
-    // });
+
+    // Sets position and initializes Map to be used in new Map step
+    // Imports AdvancedMarkerElement to create marker using image
     const position = { lat: 33.452, lng: -112.074 };
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-    const ufoImage = "../../assets/ufo.png"
+    
+    const ufoImage = this.getMarkerDetails();
 
+    // Creates Map
     const map = new Map(document.getElementById("map"), {
       zoom: 10,
       center: position,
@@ -33,22 +34,34 @@ export class GoogleMapComponent implements OnInit {
       disableDefaultUI: true
     });
 
+    
+
     // One method of adding a marker
     // Using icon for an image does NOT work on this one
     const marker = new AdvancedMarkerElement({
       map: map,
       position: position,
       title: "Ufo",
+      content: ufoImage
     });
 
     // Legacy method of adding a marker
-    // Using icon for an image works on this one
-    new google.maps.Marker({
-      position: {lat: 33.452, lng: -112.274},
-      map: map,
-      icon: ufoImage,
-    });
-
-
+    // Using icon for an image works on this one VVVVV
+    // new google.maps.Marker({
+    //   position: {lat: 33.452, lng: -112.274},
+    //   map: map,
+    //   icon: ufoImage.src,
+    //   content: pinScaled.element,
+    // });
   }
-}
+
+   getMarkerDetails(): HTMLImageElement {
+    const ufoImage = document.createElement('img');
+    ufoImage.src = "../../assets/ufo.png";
+    ufoImage.width = 80; 
+    ufoImage.height = 80;
+    return ufoImage;
+    
+  } 
+
+} // end of class
