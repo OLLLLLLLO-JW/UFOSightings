@@ -10,10 +10,10 @@ declare const google: any;
 })
 
 export class GoogleMapComponent implements OnInit {
-  phoenixUfo: { position: { lat: number; lng: number; }; title: string; }[];
+  listOfMarkers: { position: { lat: number; lng: number; }; title: string; }[];
 
   constructor(private MockMarkersService: MockMarkersService) {
-    this.phoenixUfo = MockMarkersService.markersInPhoenix;
+    this.listOfMarkers = MockMarkersService.markersInPhoenix;
    }
    
 
@@ -26,22 +26,27 @@ export class GoogleMapComponent implements OnInit {
     // Sets position and initializes Map to be used in new Map step
     // Imports AdvancedMarkerElement to create marker using image
     const position = { lat: 33.452, lng: -112.074 };
+    const zoom = 10;
     const { Map, InfoWindow } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-    // const ufoImage = this.getMarkerDetails();
+    const ufoImage = this.getMarkerDetails();
+    // Get the bounds of all the markers
+    const bounds = this.getBounds(this.listOfMarkers);
 
     // Creates Map
-    const map = new Map(document.getElementById("map")as HTMLElement, {
-      zoom: 10,
+    const map = new Map(document.getElementById("map")!, {
+      zoom,
       center: position,
       mapId: 'anyId',
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      // minZoom: zoom - 1,
+      // maxZoom: zoom + 0,
     });
-    // assign markers passed in to list used for adding marker details
-  // const listOfMarkers = this.phoenixUfo;
+    map.fitBounds(bounds);
 
+// Create Info window and customize each marker
   const infoWindow  = new InfoWindow();
-  this.phoenixUfo.forEach(({position, title}, i) => {
+  this.listOfMarkers.forEach(({position, title}, i) => {
     // Create new Img element for each marker
     const ufoImage = this.getMarkerDetails();
 
@@ -72,15 +77,6 @@ export class GoogleMapComponent implements OnInit {
     //   content: ufoImage
     // });
 
-    // Legacy method of adding a marker
-    // Using icon for an image works on this one VVVVV
-    // new google.maps.Marker({
-    //   position: {lat: 33.452, lng: -112.274},
-    //   map: map,
-    //   icon: ufoImage.src,
-    //   content: pinScaled.element,
-    // });
-
   } // end of Init Function
 
    getMarkerDetails(): HTMLImageElement {
@@ -91,5 +87,25 @@ export class GoogleMapComponent implements OnInit {
     return ufoImage;
     
   } 
+
+  getBounds(markers: { position: { lat: number; lng: number; }; }[]){
+    let north;
+    let south;
+    let east;
+    let west;
+    
+    for (const marker of markers){
+      // set the coordinates to marker's lat and lng on the first run.
+      // if the coordinates exist, get max or min depends on the coordinates.
+      north = north !== undefined ? Math.max(north, marker.position.lat) : marker.position.lat;
+      south = south !== undefined ? Math.min(south, marker.position.lat) : marker.position.lat;
+      east = east !== undefined ? Math.max(east, marker.position.lng) : marker.position.lng;
+      west = west !== undefined ? Math.min(west, marker.position.lng) : marker.position.lng;
+    };
+  
+    const bounds = { north, south, east, west };
+  
+    return bounds;
+  }
 
 } // end of class

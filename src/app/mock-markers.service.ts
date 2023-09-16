@@ -13,8 +13,12 @@ export class MockMarkersService {
       title: "marker 1" 
     },
     {
-      position:  { lat: 33.462, lng: -112.265 },
+      position:   { lat: 33.452, lng: -112.165 },
       title: "marker 2" 
+    },
+    {
+      position:   { lat: 32.552, lng: -112.074 },
+      title: "marker 3" 
     },
   ]
 
