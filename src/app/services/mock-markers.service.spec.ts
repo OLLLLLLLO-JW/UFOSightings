@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LoginMenuService } from './login-menu.service';
+import { MockMarkersService } from './services/mock-markers.service';
 
-describe('LoginMenuService', () => {
-  let service: LoginMenuService;
+describe('MockMarkersService', () => {
+  let service: MockMarkersService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LoginMenuService);
+    service = TestBed.inject(MockMarkersService);
   });
 
   it('should be created', () => {

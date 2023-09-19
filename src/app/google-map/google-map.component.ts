@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MockMarkersService } from '../mock-markers.service';
+import { MockMarkersService } from '../services/mock-markers.service';
 
 declare const google: any;
 

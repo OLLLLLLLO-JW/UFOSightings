@@ -1,5 +1,5 @@
 import { Component,  EventEmitter, Output} from '@angular/core';
-import { LoginMenuService } from '../login-menu.service';
+import { LoginMenuService } from '../services/login-menu.service';
 import { Router } from '@angular/router';
 
 @Component({
